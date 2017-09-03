@@ -12,3 +12,7 @@ go install github.com/andrewcopp/pizzabot/cmd/pizzabot
 ```
 ./pizzabot "5x5 (1, 3) (4, 4)"
 ```
+
+### Things to Improve
+* Smart solution that utilizes A* search to find the fastest path.
+* Better use of interfaces.

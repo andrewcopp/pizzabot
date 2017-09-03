@@ -1,6 +1,7 @@
 package pizzabot
 
 import (
+	"errors"
 	"strconv"
 	"strings"
 
@@ -21,7 +22,7 @@ type Config struct {
 // Parse takes the args and loads them into the Config struct.
 func (c *Config) Parse(args []string) error {
 	if len(args) != 2 {
-		return nil
+		return errors.New("Expected one arg")
 	}
 
 	args = strings.Split(args[1], " (")
@@ -46,7 +47,7 @@ func (c *Config) dimensions(arg string) (*geometry.Size, error) {
 	values := strings.Split(arg, "x")
 
 	if len(values) != 2 {
-		return nil, nil
+		return nil, errors.New("Expected size to be two-dimensional")
 	}
 
 	w, err := strconv.Atoi(values[0])
@@ -73,7 +74,8 @@ func (c *Config) coordinates(coords []string) ([]*geometry.Point, error) {
 
 		var err error
 		if len(cmpnts) != 2 {
-			return nil, nil
+			text := "Expected coordinates to be in two-dimensional space"
+			return nil, errors.New(text)
 		}
 
 		point.X, err = strconv.Atoi(cmpnts[0])

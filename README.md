@@ -5,7 +5,7 @@ Installs to $GOPATH/bin/
 ```
 go get github.com/andrewcopp/geometry
 go get github.com/andrewcopp/pizzabot
-go install github.com/andrewcopp/pizzabot
+go install github.com/andrewcopp/pizzabot/cmd/pizzabot
 ```
 
 ### Running Pizzabot

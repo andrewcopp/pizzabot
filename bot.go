@@ -1,10 +1,12 @@
 package pizzabot
 
-import "github.com/andrewcopp/geometry"
+import (
+	"github.com/andrewcopp/geometry"
+)
 
 // Solver identifies structs with the ability to solve Pizzabot challenge.
 type Solver interface {
-	Solve(g *Grid) string
+	Solve(g *Grid) (string, error)
 }
 
 // Simple solves the Pizzabot challenge by visiting houses in the order they
@@ -25,7 +27,7 @@ func NewSimple(config *Config) *Simple {
 
 // Solve returns a string denoting the plan needed to execute the solution to
 // the Pizzabot challenge.
-func (s *Simple) Solve(g *Grid) string {
+func (s *Simple) Solve(g *Grid) (string, error) {
 	solution := ""
 	for _, point := range s.order {
 		for s.current.X < point.X {
@@ -50,7 +52,7 @@ func (s *Simple) Solve(g *Grid) string {
 
 		solution = solution + "D"
 	}
-	return solution
+	return solution, nil
 }
 
 // Smart solves the Pizzabot challenge by using A* search to find the most
@@ -66,6 +68,6 @@ func NewSmart() *Smart {
 
 // Solve returns a string denoting the plan needed to execute the solution to
 // the Pizzabot challenge.
-func (s *Smart) Solve(g *Grid) string {
-	return "Smart Solution"
+func (s *Smart) Solve(g *Grid) (string, error) {
+	return "Smart Solution", nil
 }

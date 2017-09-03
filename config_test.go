@@ -19,6 +19,8 @@ func TestParse(t *testing.T) {
 		{[]string{"exec_path", "5xB (1, 3) (4, 4)"}, false},
 		{[]string{"exec_path", "5x5 (C, 3) (D, 4)"}, false},
 		{[]string{"exec_path", "5x5 (1, E) (4, F)"}, false},
+		{[]string{"exec_path", "5x5 (5, 3)"}, false},
+		{[]string{"exec_path", "5x5 (1, 5)"}, false},
 	}
 
 	for _, c := range cases {

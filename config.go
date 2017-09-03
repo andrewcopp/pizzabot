@@ -39,6 +39,10 @@ func (c *Config) Parse(args []string) error {
 		return err
 	}
 
+	if err := c.check(); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -91,4 +95,19 @@ func (c *Config) coordinates(coords []string) ([]*geometry.Point, error) {
 	}
 
 	return points, nil
+}
+
+func (c *Config) check() error {
+
+	for _, point := range c.Points {
+		if point.X >= c.Size.Width || point.X <= -1 {
+			return errors.New("House exists outside of map")
+		}
+
+		if point.Y >= c.Size.Height || point.Y <= -1 {
+			return errors.New("House exists outside of map")
+		}
+	}
+
+	return nil
 }

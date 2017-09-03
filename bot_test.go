@@ -21,7 +21,7 @@ func TestSimpleSolve(t *testing.T) {
 
 	for _, c := range cases {
 		bot := NewSimple(c.in)
-		got := bot.Solve(NewGrid(c.in))
+		got, _ := bot.Solve(NewGrid(c.in))
 		if got != c.out {
 			t.Error("Unexpected output.")
 		}
@@ -35,7 +35,7 @@ func TestSmartSolve(t *testing.T) {
 	points := []*geometry.Point{pointA, pointB}
 	config := &Config{Size: size, Points: points}
 	bot := NewSmart()
-	got := bot.Solve(NewGrid(config))
+	got, _ := bot.Solve(NewGrid(config))
 	if got != "Smart Solution" {
 		t.Error("Unexpected output.")
 	}

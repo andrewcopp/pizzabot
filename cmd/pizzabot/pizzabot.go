@@ -21,6 +21,9 @@ func init() {
 func main() {
 	grid := pizzabot.NewGrid(config)
 	bot := pizzabot.NewSimple(config)
-	out := bot.Solve(grid)
+	out, err := bot.Solve(grid)
+	if err != nil {
+		log.Fatalln(err.Error())
+	}
 	fmt.Println(out)
 }

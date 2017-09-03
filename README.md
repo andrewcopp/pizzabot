@@ -9,4 +9,6 @@ go install github.com/andrewcopp/pizzabot
 ```
 
 ### Running Pizzabot
+```
 ./pizzabot "5x5 (1, 3) (4, 4)"
+```
